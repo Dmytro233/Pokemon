@@ -14,7 +14,7 @@ export default function PokemonList({ onShowClick }) {
     axios
       .get(`http://pokeapi.salestock.net/api/v2/pokemon/?limit=${count + 12}`)
       .then(function (response) {
-        setPokemons(response.data.result);
+        setPokemons(response.data.results);
         setCount(count + 12);
       })
       .catch(function (error) {
@@ -41,18 +41,19 @@ export default function PokemonList({ onShowClick }) {
         alignItems="center"
         spacing={3}
       >
-        {pokemons.map((pokemon) => (
-          <Grid
-            key={pokemon.name}
-            item
-            className={classes.gridItem}
-            xs={12}
-            sm={6}
-            md={4}
-          >
-            <PokemonItem pokemon={pokemon} onShowClick={onShowClick} />
-          </Grid>
-        ))}
+        {pokemons.length > 0 &&
+          pokemons.map((pokemon) => (
+            <Grid
+              key={pokemon.name}
+              item
+              className={classes.gridItem}
+              xs={12}
+              sm={6}
+              md={4}
+            >
+              <PokemonItem pokemon={pokemon} onShowClick={onShowClick} />
+            </Grid>
+          ))}
         <Grid item className={classes.buttonBlock} xs={12}>
           <Button
             variant="contained"
