@@ -11,28 +11,36 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     margin: theme.spacing(3),
   },
-  // gridContainer: {
-  //   border: "2px solid red",
-  // },
-  // gridItem: {
-  //   border: "2px solid blue",
-  // },
   item: {
     padding: theme.spacing(2, 2),
+    cursor: "pointer",
   },
   itemImage: {
-    width: "100%",
-    height: "100%",
-    borderRadius: "4px",
-    marginBottom: theme.spacing(2),
+    textAlign: "center",
   },
   itemName: {
-    // border: "2px solid blue",
     textAlign: "center",
   },
   itemPower: {
-    backgroundColor: "violet",
     borderRadius: "4px",
+  },
+  tableBlock: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+    overflowX: "auto",
+  },
+  details: {
+    padding: theme.spacing(2, 2),
+    display: "block",
+  },
+  none: {
+    display: "none",
+  },
+  buttonBlock: {
+    textAlign: "center",
+  },
+  button: {
+    margin: theme.spacing(1),
   },
 }));
 

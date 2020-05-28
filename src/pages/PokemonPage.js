@@ -1,24 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import PokemonList from "../components/List";
 import PokemonDetails from "../components/Details";
-import axios from "axios";
-
 import useStyles from "../styles";
 
 export default function PokemonPage() {
   const classes = useStyles();
-  useEffect(() => {
-    axios
-      .get("http://pokeapi.salestock.net/api/v2/pokemon/?limit=12")
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  const [showUrl, setShowUrl] = useState("");
+
+  const showClick = (url) => {
+    setShowUrl(url);
+  };
 
   return (
     <>
@@ -33,11 +26,11 @@ export default function PokemonPage() {
           alignItems="center"
           spacing={3}
         >
-          <Grid item className={classes.gridItem} xs={8}>
-            <PokemonList />
+          <Grid item className={classes.gridItem} xs={12} md={8}>
+            <PokemonList onShowClick={showClick} />
           </Grid>
-          <Grid item className={classes.gridItem} xs={4}>
-            <PokemonDetails />
+          <Grid item className={classes.gridItem} xs={12} md={4}>
+            <PokemonDetails showUrl={showUrl} />
           </Grid>
         </Grid>
       </div>
